@@ -2,9 +2,9 @@ package net.coremotion.challenge1.ui.users.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import net.coremotion.challenge1.common.Resource
 import net.coremotion.challenge1.domain.model.Users
 import net.coremotion.challenge1.domain.reposoitory.UserRepository
-import net.coremotion.challenge1.common.Resource
 
 class UsersPagingSource(private val userRepository: UserRepository) :
     PagingSource<Int, Users.Data>() {
@@ -29,7 +29,10 @@ class UsersPagingSource(private val userRepository: UserRepository) :
 
                 if (pageNumber != 1)
                     preview = pageNumber - 1
-                LoadResult.Page(data = response.data.data!!, prevKey = preview, nextKey = next)
+                LoadResult.Page(
+                    data = response.data.data!!,
+                    prevKey = preview,
+                    nextKey = next)
             }
             Resource.Status.ERROR -> {
                 LoadResult.Error(Throwable())

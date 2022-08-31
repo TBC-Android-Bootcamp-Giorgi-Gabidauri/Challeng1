@@ -22,10 +22,9 @@ class UserDetailViewModel @Inject constructor(
 
     fun getUserDetail(userId: Int) {
         viewModelScope.launch {
-            withContext(IO) {
-                val resource = userRepository.getUserDetail(userId)
-                _userDetailFlow.value = resource
-            }
+            val resource = userRepository.getUserDetail(userId)
+            _userDetailFlow.value = resource
         }
     }
+
 }

@@ -19,7 +19,12 @@ class UsersViewModel @Inject constructor(
 
     fun usersFlow() =
         Pager(
-            config = PagingConfig(pageSize = 1,maxSize = 200),
-            pagingSourceFactory = { UsersPagingSource(userRepository) })
-            .flow.cachedIn(CoroutineScope(Main))
+            config = PagingConfig(
+                pageSize = 1,
+                maxSize = 200
+            ),
+            pagingSourceFactory = {
+                UsersPagingSource(userRepository)
+            })
+            .flow.cachedIn(viewModelScope)
 }

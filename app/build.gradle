@@ -2,12 +2,13 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
 }
 
 android {
-    compileSdk 34
+    compileSdk 32
 
     defaultConfig {
         applicationId "net.coremotion.challenge1"
@@ -26,11 +27,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_20
-        targetCompatibility JavaVersion.VERSION_20
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures{
+        viewBinding = true
     }
 }
 

@@ -33,19 +33,18 @@ class UsersFragment : BaseFragment<UsersFragmentBinding>(UsersFragmentBinding::i
     private fun initUsersRecyclerView() {
         binding.usersRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            usersAdapter = UsersAdapter().apply {
-                userItemOnClick = {
-                    openUserDetail(it)
-                }
-            }
+            usersAdapter = UsersAdapter{ openUserDetail(it.id!!)}
+//                .apply {
+//                userItemOnClick = {
+//                    openUserDetail(it)
+//                }
+//            }
             adapter = usersAdapter
         }
     }
 
     private fun openUserDetail(userId: Int) {
-        UsersFragmentDirections.actionNewsFragmentToUserDetailFragment(
-            userId
-        )
+        findNavController().navigate(UsersFragmentDirections.actionNewsFragmentToUserDetailFragment(userId))
     }
 
     private fun setObservers() {

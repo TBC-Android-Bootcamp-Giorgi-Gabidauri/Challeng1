@@ -6,7 +6,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import net.coremotion.challenge1.common.ApiEndpoints
+import net.coremotion.challenge1.common.ApiEndpoints.BASE_URL
 import net.coremotion.challenge1.data.remote.ApiService
 import net.coremotion.challenge1.domain.reposoitory.UserRepository
 import okhttp3.OkHttpClient
@@ -38,7 +38,7 @@ object AppModule {
     @Singleton
     @Provides
     fun apiService(okHttpClient: OkHttpClient): ApiService = Retrofit.Builder()
-        .baseUrl(ApiEndpoints.BASE_URL)
+        .baseUrl(BASE_URL)
         .addConverterFactory(
             MoshiConverterFactory.create(
                 Moshi.Builder()
